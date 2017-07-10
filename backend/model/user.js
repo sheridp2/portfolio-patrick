@@ -10,8 +10,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = Schema({
-  username: { type: String, require: true },
-  password: { typee: String, require: true },
+  username: { type: String, require: true, unique: true },
+  password: { type: String, require: true },
 });
 
 userSchema.methods.generatePasswordHash = function(password) {
