@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 const app = (module.exports = express());
 const router = express.Router();
 const authRoutes = require('./route/auth-route')(router);
-// const articleRoutes = require('./route/article-route')(router);
+const articleRoutes = require('./route/article-route')(router);
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/patblog';
@@ -25,7 +25,7 @@ app.use(cors());
 app.use(bodyParser);
 
 app.use('/api', authRoutes);
-// app.use('./api', articleRoutes);
+app.use('./api', articleRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Listening on PORT ${PORT}`);
